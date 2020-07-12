@@ -14,3 +14,15 @@ I've been introduced to C through the online CS50 lectures from Harvard. I've de
 
 ### Specification
 The app is a piece of software with CRUD functionality which outputs a single generated file that contains all the data you inputted. When launched, it takes the same file as an input for the capability to edit it through the app's interface. If no such file exists in the directory, it generates a new data file instead.
+
+#### File Structure
+Initial structure of how the data is organized is provided below:
+```
+index.c
+authors
+    lastname, fname
+        booktitle1.txt
+        booktitle2.txt
+        booktitle3.txt
+```
+The year of publishing, among other information, is stored within the .txt files themselves.
