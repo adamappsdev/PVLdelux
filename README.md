@@ -1,4 +1,3 @@
-# PVLdeluxe
 ![Logo](https://github.com/adamappsdev/PVLdeluxe/blob/master/PVLdeluxe.png)
 A personal virtual library (PVL) app built in C.
 
