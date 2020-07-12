@@ -1,4 +1,5 @@
 ![Logo](https://github.com/adamappsdev/PVLdeluxe/blob/master/PVLdeluxe.png)
+### PVLdeluxe
 A personal virtual library (PVL) app built in C.
 
 The "delux" suffix is added as a tongue-in-cheek gesture.
