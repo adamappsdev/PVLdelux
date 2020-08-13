@@ -16,7 +16,21 @@ I've been introduced to C through the online CS50 lectures from Harvard. I've de
 ### Specification
 The app is a piece of software with CRUD functionality which outputs a single generated file that contains all the data you inputted. When launched, it takes the same file as an input for the capability to edit it through the app's interface. If no such file exists in the directory, it generates a new data file instead.
 
-#### File Structure
+#### Advantages of SQLite
+The app uses SQLite version 3.32.3.
+Since most operations are fairly basic, there is little need to implement a large or complicated database system.
+
+Some advantages of SQLite, taken from [GeeksforGeeks](https://www.geeksforgeeks.org/introduction-to-sqlite/):
+
+- The transactions follow ACID properties i.e. atomicity, consistency, isolation, and durability even after system crashes and power failures.
+- The configuration process is very easy, no setup or administration needed.
+- All the features of SQL are implemented in it with some additional features like partial indexes, indexes on expressions, JSON, and common table expressions.
+- Sometimes it is faster than the direct file system I/O.
+- It supports terabyte-sized databases and gigabyte-sized strings and blobs.
+- Almost all OS supports SQLite like Android, BSD, iOS, Linux, Mac, Solaris, VxWorks, and Windows (Win32, WinCE, etc. It is very much easy to port to other systems.
+- Complete database can be stored in a single cross-platform disk file.
+
+#### File Structure (deprecated)
 Initial structure of how the data is organized is provided below:
 ```
 index.c
