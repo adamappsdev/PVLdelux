@@ -14,7 +14,13 @@ Additionally, the ability to add a short description of what the list is about o
 I've been introduced to C through the online CS50 lectures from Harvard. I've decided to use C for this specific app because of its good performance as well as unversality of syntax, which can be translated into other coding languages with relative ease if such a need ever manifests. Additionally, there's something very visceral when you code in C, perhaps because it's closer to Assembly-level code than other popular languages.
 
 ### Specification
-The app is a piece of software with CRUD functionality which outputs a single generated file that contains all the data you inputted. When launched, it takes the same file as an input for the capability to edit it through the app's interface. If no such file exists in the directory, it generates a new data file instead.
+~~The app is a piece of software with CRUD functionality which outputs a single generated file that contains all the data you inputted. When launched, it takes the same file as an input for the capability to edit it through the app's interface. If no such file exists in the directory, it generates a new data file instead.~~
+
+#### Database Structure
+| Unique ID  | Author Full Name | Book Title | Book Subtitle | Year Published | Publisher | Genre | Notes | Quotes | File (if exists) |
+| :---: | :--- | :--- | :---- | :---: | :---: | :---: | :--- | :---: | :---: |
+| `id` | `author`  | `title` | `subtitle`  | `year`  | `publisher` | `genre`  | `notes`  | `quotes`  | `filename`  |
+| 1 | Lewis Carroll  | Alice's Adventures in Wonderland  |  | 1865 | Macmillan | Fantasy  | Considered to be one of the best examples of the literary nonsense genre. | ... |  |
 
 #### Advantages of SQLite
 The app uses SQLite version 3.32.3.
