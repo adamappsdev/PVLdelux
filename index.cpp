@@ -1,74 +1,69 @@
+
+//=========================================================
+// Name        : SqLite_Test.cpp
+// Author      : Adam
+// Version     : 0.01
+// Copyright   : Licensed under the MIT License
+// Description : SqLite_Test.cpp in C++, Ansi-style
+//=========================================================
+
 #include <iostream>
-#include <string>
+#include <sqlite3.h>
 using namespace std;
+
+// This is the callback function to display the select data in the table
+static int callback(void *NotUsed, int argc, char **argv, char **szColName)
+{
+  for (int i = 0; i < argc; i++)
+  {
+    std::cout << szColName[i] << " = " << argv[i] << std::endl;
+  }
+
+  std::cout << "\n";
+
+  return 0;
+}
 
 int main()
 {
-   while (1)
-   {
-      int option, year;
-      char exit;
-      string name;
-      string title;
-      string publisher;
-      string genre;
-      string password;
-      cout << "Welcome to PVL Deluxe.\n";
-      cout << "Please select option below:\n";
-      cout << "1. Add new book.\n";
-      cout << "2. View books in database.\n";
-      cout << "3. Edit existing books.\n";
-      cout << "4. Remove books from database.\n";
-      cout << "5. Exit program.\n";
-      cout << "Enter a valid option: ";
-      cin >> option;
-      switch (option) {
-         case 0:
-            cout << "Your option: " << option << ". Option NULL.\nPlease enter password: ";
-            cin >> password;
-            cout << "Entered password: " << password << "\n";
-            break;
-         case 1:
-            cout << "Your option: " << option << ". Add new book.\n";
-            break;
-         case 2:
-            cout << "Your option: " << option << ". View books in database.\n\n";
-            break;
-         case 3:
-            cout << "Your option: " << option << ". Edit existing books.\n\n";
-            break;
-         case 4:
-            cout << "Your option: " << option << ". Remove books from database.\n\n";
-            break;
-         case 5:
-            cout << "Your option: " << option << ". Exit Program.\n";
-            while (1)
-            {
-               cout << "Are you sure you want to exit? y/n: ";
-               cin >> exit;
-               if (exit == *"y")
-               {
-                  cout << "Program shutting down. Goodbye.";
-                  return 0;
-               }
-               else if (exit == *"n")
-               {
-                  break;
-               }
-               else 
-               {
-                  cout << "Option not recognized. Please try again.\n";
-               }
-            }
-            break;
-         default:
-            cout << "Option not recognized. Please try again.\n\n";
-            break;
-      }
-      if (exit == *"y")
-      {
-         return 0;
-      }
-   }
-   return 0;
+  sqlite3 *db;
+  char *szErrMsg = 0;
+
+  // open database
+  int conn = sqlite3_open("db/library.db", &db);
+
+  if (conn)
+  {
+    std::cout << "SQLite Database Access Error: %s\n", sqlite3_errmsg(db);
+    return(0);
+  }
+  else
+  {
+    std::cout << "SQLite Database Access Successful. Congratulations!\n";
+  }
+
+  // prepare our sql statements
+  const char *pSQL[6];
+  //pSQL[0] = "INSERT INTO booklist(author, title, completed) VALUES ('David Goggins', 'Can''t Hurt Me', 1)";
+  pSQL[0] = "SELECT * FROM booklist";
+
+  // execute sql
+  for(int i = 0; i < 1; i++)
+  {
+    conn = sqlite3_exec(db, pSQL[i], callback, 0, &szErrMsg);
+    if(conn != SQLITE_OK)
+    {
+      std::cout << "SQL Error: " << szErrMsg << std::endl;
+      sqlite3_free(szErrMsg);
+      break;
+    }
+  }
+
+  // close database
+  if (db)
+  {
+    sqlite3_close(db);
+  }
+
+  return (0);
 }
