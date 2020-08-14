@@ -47,3 +47,14 @@ authors
         booktitle3.txt
 ```
 The year of publishing, among other information, is stored within the .txt files themselves.
+
+### Problems
+
+##### Setting up
+
+~~SQLite is hard to set up if C++ is the preferred coding language.~~
+~~[Stack Overflow](https://stackoverflow.com/questions/10574933/compiling-of-sqlite3-in-c) helped tremendously setting it up.~~
+~~1. Include any reference to sqlite as extern "C", since sqlite is written in C.~~
+~~2. Check if you have gcc by typing `gcc --version` in your terminal. If you're on Windows, it should be built with MinGW software)~~
+~~3. Create the SQLite lib file with `gcc -c sqlite3.c`, which will output `sqlite3.o`.~~
+~~4. Link your program to the newly created library with `g++ main.c sqlite3.o`.~~
